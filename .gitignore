@@ -1,0 +1,6 @@
+*.mod
+*.o
+a.out
+fort.*
+build
+*.ps
