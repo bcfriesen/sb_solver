@@ -1,0 +1,43 @@
+/------------\
+| DESCRIPTION |
+\------------/
+
+This program calculates ion populations in homogeneous matter in thermal
+equilibrium by solving the Saha-Boltzmann equation. Currently it only works for
+hydrogen, but it can be extended to any mixture of atoms.
+
+/-----------------------\
+| SOFTWARE DEPENDENCIES |
+\-----------------------/
+
+- Fortran compiler
+- CMake
+
+/--------------------------\
+| COMPILATION INSTRUCTIONS |
+\--------------------------/
+
+CMake writes Makefiles for you, so that you (and I) don't have to. Compiling is
+simple:
+
+    cd sb_solver
+    mkdir build
+    cd build
+    cmake ..
+    make
+
+Then use the included namelist (it expects the build directory to be called
+"build" so you have to change that if you called it something else):
+
+   ./run
+
+The output is just a file with a bunch of columns of data. The first column is
+the temperature in Kelvin. The rest of the columns are the ion populations.
+
+/------------\
+| REFERENCES |
+\------------/
+
+"Radiative Transfer in Stellar Atmospheres" by Rob Rutten. This is a free PDF
+containing his lecture notes:
+http://www.staff.science.uu.nl/~rutte101/rrweb/rjr-edu/coursenotes/rutten_rtsa_notes_2003.pdf
