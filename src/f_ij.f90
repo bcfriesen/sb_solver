@@ -1,11 +1,12 @@
 ! f: determines fraction of atom i which is in ionization state j
 FUNCTION f(i, j, ne, t)
   USE machine
+  USE interfaces, ONLY: saha
   IMPLICIT NONE
   REAL (KIND=dp) :: f
-  REAL (KIND=dp), EXTERNAL :: saha
   REAL (KIND=dp) :: ne, t
-  INTEGER :: i, j, m, n
+  INTEGER :: i, j
+  INTEGER :: m, n
   ! num: numerator of fij equation we derived in class
   ! denom: denominator of fij equation we derived in class
   REAL (KIND=dp) :: num, denom, term

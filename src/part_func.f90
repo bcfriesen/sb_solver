@@ -5,7 +5,8 @@ FUNCTION part(i, j)
   USE machine
   IMPLICIT NONE
   REAL (KIND=dp) :: part
-  INTEGER :: i, j, m
+  INTEGER :: i, j
+  INTEGER :: m
 
   part = 0.0D0
   DO m = 1, nlvl(i, j)

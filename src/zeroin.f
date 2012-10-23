@@ -1,18 +1,7 @@
-c-------------------------------------------------------------------------------
-c
-c File Name : zeroin.f
-c
-c Purpose : root finder using Brent's method. copied from Netlib.
-c
-c Creation Date : 12-10-2010
-c
-c Last Modified : Tue 12 Oct 2010 10:09:33 PM CDT
-c
-c Created By : Brian Friesen
-c
-c-------------------------------------------------------------------------------
+c root finder using Brent's method. copied from Netlib.
       double precision function zeroin(ax,bx,f,tol)
       double precision ax,bx,f,tol
+      external f
 c
 c      a zero of the function  f(x)  is computed in the interval ax,bx .
 c

@@ -3,12 +3,13 @@ PROGRAM hw7
   USE atomicdata
   USE globalvars
   USE machine
+  USE interfaces, ONLY: zeroin, solvene, f
   IMPLICIT NONE
-  REAL (KIND=dp), EXTERNAL :: saha, part, zeroin, solvene, f
-  ! ne: free electron density (cm^{-3})
+!  REAL (KIND=dp), EXTERNAL :: saha, part, zeroin, solvene, f
+  ! ne: free electron number density (cm^{-3})
   REAL (KIND=dp) :: ne
   INTEGER :: m
-  NAMELIST /params/pg, y
+  NAMELIST /params/ pg, y
   ! read pressure and abundances from stdin
   READ (*, params)
   ! surely everything interesting that happens to hydrogen will happen within

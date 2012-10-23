@@ -6,12 +6,13 @@ FUNCTION solvene(ne)
   IMPLICIT NONE
   REAL (KIND=dp) :: solvene
   ! ne: free electron density (cm^{-3})
+  REAL (KIND=dp) :: ne
   ! ng: total number of free particles (free electrons + atoms) (cm^{-3})
   ! denom: denominator of 2nd term of equation we need to solve to get ne
   ! term1, term2: the 2 separate summations in the denominator (over the Y's
   ! and
   ! the fij's)
-  REAL (KIND=dp) :: ne, ng, denom, term1, term2
+  REAL (KIND=dp) :: ng, denom, term1, term2
   REAL (KIND=dp), EXTERNAL :: saha, f
   INTEGER :: i, j
   ! get particle density from ideal gas law
