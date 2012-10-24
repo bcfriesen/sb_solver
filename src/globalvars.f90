@@ -1,10 +1,9 @@
-! Contains global variables that everybody can use so I don't have pass 83
-! arguments to every function
+!> Contains global variables that everybody can use so I don't have pass 83
+!! arguments to every function
 MODULE globalvars
   USE machine
   IMPLICIT NONE
-  ! t: temperature (K)
-  ! pg: total gas pressure (erg cm^{-3})
-  ! y: number fractions of elements
-  REAL (KIND=dp), PUBLIC :: t, pg, y(92)
+  REAL (KIND=dp) :: t !< temperature
+  REAL (KIND=dp) :: p_g !< total gas pressure
+  REAL (KIND=dp) :: y(92) !< number fraction of each element
 END MODULE globalvars

@@ -1,22 +1,23 @@
-! solvene: this is the function the root finder uses to calculate ne
-FUNCTION solvene(ne)
+!> This is the function the root finder uses to calculate \f$n_e\f$.
+!! @param n_e free electron number density
+FUNCTION solvene(n_e)
   USE atomicdata
   USE globalvars
   USE machine
   IMPLICIT NONE
   REAL (KIND=dp) :: solvene
-  ! ne: free electron density (cm^{-3})
-  REAL (KIND=dp) :: ne
-  ! ng: total number of free particles (free electrons + atoms) (cm^{-3})
-  ! denom: denominator of 2nd term of equation we need to solve to get ne
-  ! term1, term2: the 2 separate summations in the denominator (over the Y's
-  ! and
-  ! the fij's)
-  REAL (KIND=dp) :: ng, denom, term1, term2
-  REAL (KIND=dp), EXTERNAL :: saha, f
-  INTEGER :: i, j
+  REAL (KIND=dp) :: n_e
+
+  REAL (KIND=dp) :: ng !< total number of free particles (free electrons + atoms)
+  REAL (KIND=dp) :: denom !< denominator of 2nd term of equation we need to solve to get \f$n_e\f$
+  REAL (KIND=dp) :: term1 !< summation of \f$Y_i\f$ in denominator
+  REAL (KIND=dp) :: term2 !< summation of \f$f_ij\f$ in denominator
+  REAL (KIND=dp), EXTERNAL :: saha, f_ij
+  INTEGER :: i !< loops
+  INTEGER :: j !< loops
+
   ! get particle density from ideal gas law
-  ng = pg/(k*t)
+  ng = p_g / (k_b * t)
   denom = 0.0D0
   term1 = 0.0D0
   term2 = 0.0D0
@@ -27,11 +28,11 @@ FUNCTION solvene(ne)
   DO i = 1, 1
     ! sum over all the ionization states of each element
     DO j = 0, i
-      term2 = term2 + dble(j)*f(i, j, ne, t)
+      term2 = term2 + dble(j)*f_ij(i, j, n_e, t)
     END DO
     term1 = term1 + y(i)*term2
   END DO
   denom = term1
-  solvene = ng - ne*(1.0D0+(1.0D0/denom))
+  solvene = ng - n_e*(1.0D0+(1.0D0/denom))
   RETURN
 END FUNCTION solvene

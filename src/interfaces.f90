@@ -3,34 +3,39 @@ MODULE INTERFACES
 
   INTERFACE
 
-    FUNCTION f(i, j, ne, t)
+    FUNCTION f_ij(i, j, n_e, t)
       USE machine
       IMPLICIT NONE
-      REAL (KIND=dp) :: f
-      REAL (KIND=dp) :: ne, t
-      INTEGER :: i, j
-    END FUNCTION f
+      REAL (KIND=dp) :: f_ij
+      INTEGER :: i
+      INTEGER :: j
+      REAL (KIND=dp) :: n_e
+      REAL (KIND=dp) :: t
+    END FUNCTION f_ij
 
     FUNCTION part(i, j)
       USE machine
       IMPLICIT NONE
       REAL (KIND=dp) :: part
-      INTEGER :: i, j
+      INTEGER :: i
+      INTEGER :: j
     END FUNCTION part
 
-    FUNCTION saha(i, j, ne, t)
+    FUNCTION saha(i, j, n_e, t)
       USE machine
       IMPLICIT NONE
       REAL (KIND=dp) :: saha
-      REAL (KIND=dp) :: ne, t
-      INTEGER :: i, j
+      INTEGER :: i
+      INTEGER :: j
+      REAL (KIND=dp) :: n_e
+      REAL (KIND=dp) :: t
     END FUNCTION saha
 
-    FUNCTION solvene(ne)
+    FUNCTION solvene(n_e)
       USE machine
       IMPLICIT NONE
       REAL (KIND=dp) :: solvene
-      REAL (KIND=dp) :: ne
+      REAL (KIND=dp) :: n_e
     END FUNCTION solvene
 
     double precision function zeroin(ax,bx,f,tol)

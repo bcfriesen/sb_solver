@@ -1,7 +1,17 @@
-c root finder using Brent's method. copied from Netlib.
-      double precision function zeroin(ax,bx,f,tol)
-      double precision ax,bx,f,tol
-      external f
+c> Root finder using Brent's method. Copied from Netlib.
+c> @param ax lower limit of root search domain
+c> @param bx upper limit of root search domain
+c> @param f function whose root we're looking for
+c> @param tol error tolerance
+      function zeroin(ax, bx, f, tol)
+      use machine
+      real(kind=dp) :: zeroin
+      real(kind=dp) :: ax
+      real(kind=dp) :: bx
+      real(kind=dp) :: f
+      real(kind=dp) :: tol
+
+      external :: f
 c
 c      a zero of the function  f(x)  is computed in the interval ax,bx .
 c

@@ -4,3 +4,6 @@ a.out
 fort.*
 build
 *.ps
+.DS_Store
+html
+latex

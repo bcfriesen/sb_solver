@@ -1,28 +1,26 @@
-! Solves equation of state using the Saha-Boltzmann equation.
+!> Calculates level and ion populations in thermal equilibrium using the
+!! Saha-Boltzmann equation.
 PROGRAM hw7
   USE atomicdata
   USE globalvars
   USE machine
-  USE interfaces, ONLY: zeroin, solvene, f
+  USE interfaces, ONLY: zeroin, solvene, f_ij
   IMPLICIT NONE
-!  REAL (KIND=dp), EXTERNAL :: saha, part, zeroin, solvene, f
-  ! ne: free electron number density (cm^{-3})
-  REAL (KIND=dp) :: ne
-  INTEGER :: m
-  NAMELIST /params/ pg, y
+
+  REAL (KIND=dp) :: n_e !< free electron number density
+  INTEGER :: m !< loops
+  NAMELIST /params/ p_g, y
   ! read pressure and abundances from stdin
   READ (*, params)
+  call fill_atomic_data
   ! surely everything interesting that happens to hydrogen will happen within
-  ! this
-  ! temperature range
+  ! this temperature range
   DO m = 10, 100000, 10
     t = dble(m)
-    ! zeroin is the root finder. arguments are (lower bound, upper bound,
-    ! f(x),
-    ! tolerance)
-    ne = zeroin(1.0D-10, 1.0D20, solvene, 1.0D-5)
-    ! these had better add up to 1
-    WRITE (11, *) t, f(1, 0, ne, t), f(1, 1, ne, t)
+    ! solve non-linear equation for n_e
+    n_e = zeroin(1.0D-10, 1.0D20, solvene, 1.0D-5)
+    ! write out number fractions of n_HI and n_HII
+    WRITE (11, *) t, f_ij(1, 0, n_e, t), f_ij(1, 1, n_e, t)
   END DO
   STOP
 END PROGRAM hw7
