@@ -15,7 +15,8 @@ MODULE atomicdata
                             !! arrays.
   REAL (KIND=dp) :: chilvl(92, 0:92, nlvlmax) !< level energies (ground = 0) (units = eV)
   INTEGER :: g_i(92, 0:92, nlvlmax) !< statistical weight for each level
-  REAL (KIND=dp) :: chiion(92, 0:92) !< chiion\f$(i,j)\f$: ionization potential of atom \f$i\f$ in ionization state \f$j\f$ (units: eV)
+  REAL (KIND=dp) :: chiion(92, 0:92) !< chiion\f$(i,j)\f$: ionization potential of atom \f$i\f$ in
+                                     !! ionization state \f$j\f$ (units: eV)
   INTEGER, PARAMETER :: g_e = 2 !< electron statistical weight
   REAL (KIND=dp), PARAMETER :: pi = 3.14159D0 !< \f$\pi\f$
   REAL (KIND=dp), PARAMETER :: m_e = 9.109D-28 !< electron rest mass

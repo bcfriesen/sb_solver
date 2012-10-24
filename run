@@ -1,4 +1,7 @@
 #!/bin/ksh
+
+# Right now this program only works for hydrogen, so leave everything else at
+# zero.
 build/src/sb_solver << EOF
 &params
         p_g = 1.0d5
