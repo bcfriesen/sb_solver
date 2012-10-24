@@ -29,7 +29,8 @@ simple:
 Then use the included namelist (it expects the build directory to be called
 "build" so you have to change that if you called it something else):
 
-   ./run
+    cd ..
+    ./run
 
 The output is just a file with a bunch of columns of data. The first column is
 the temperature in Kelvin. The rest of the columns are the ion populations.
