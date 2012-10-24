@@ -32,8 +32,16 @@ Then use the included namelist (it expects the build directory to be called
     cd ..
     ./run
 
+/--------------------\
+| READING THE OUTPUT |
+\--------------------/
+
 The output is just a file with a bunch of columns of data. The first column is
-the temperature in Kelvin. The rest of the columns are the ion populations.
+the temperature in Kelvin. The rest of the columns are the ion populations. In
+the case of pure hydrogen, for example, the columns are
+
+   [temperature]     [n_HI / n_H]     [n_HII / n_H]
+        ...              ...                ...
 
 /------------\
 | REFERENCES |
